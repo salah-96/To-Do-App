@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, jsonify
 
 app = Flask(__name__)
 tasks = [
@@ -17,7 +17,7 @@ def home():
 def add_task():
     task = request.form.get('task')
     tasks.append(task)
-    return render_template('home.html', tasks=tasks)
+    return redirect('/')
 
 
 @app.route('/delete', methods=['POST'])
@@ -25,7 +25,7 @@ def delete_task():
     task = request.form.get('task')
     if task in tasks:
         tasks.remove(task)
-    return render_template('home.html', tasks=tasks)
+        return redirect('/')
 
 
 if __name__ == "__main__":
