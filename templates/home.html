@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+</head>
+<body>
+  <h1>Todo List</h1>
+
+  <form action="/add" method="POST">
+    <input type="text" name="task" placeholder="Task">
+    <button type="submit">Add Task</button>
+  </form>
+
+  <ul>
+    {% for task in tasks %}
+      <li>{{ task }}</li>
+    {% endfor %}
+  </ul>
+
+  <form action="/delete" method="POST">
+    <input type="text" name="task" placeholder="Task">
+    <button type="submit">Delete Task</button>
+  </form>
+</body>
+</html>
